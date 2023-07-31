@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<robot name="backpack">
+  <material name="white">
+    <color rgba="1 1 1 1"/>
+  </material>
+  
+  <link name="IMU">
+    <visual>
+      <geometry>
+        <box size="0.036 0.024 0.011"/>
+      </geometry>
+      <material name="white"/>
+    </visual>
+  </link>
+  
+  <link name="top LiDAR">
+    <visual>
+      <geometry>
+        <cylinder length="0.07" radius="0.05"/>
+      </geometry>
+      <material name="white"/>
+    </visual>
+  </link>
+  
+  <link name="oblique LiDAR">
+    <visual>
+      <geometry>
+        <cylinder length="0.07" radius="0.05"/>
+      </geometry>
+      <material name="white"/>
+    </visual>
+  </link>
+  
+  <joint name="lidar_to_imu" type="fixed">
+    <parent link="top LiDAR"/>
+    <child link="IMU"/>
+    <origin rpy="3.14159265358979 0.0 1.57579632700000" xyz="0.0 -0.005 0.069"/>
+  </joint>
+  
+  <joint name="toplidar_to_obliqueLiDAR" type="fixed">
+    <parent link="top LiDAR"/>
+    <child link="oblique LiDAR"/>
+    <origin rpy="-0.00752284274294495 1.24999384488347 3.13805061985607" xyz="-0.208 -0.006 -0.142"/>
+  </joint>
+</robot>
